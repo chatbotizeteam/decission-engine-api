@@ -2,7 +2,13 @@
 
 Below you will find the list of all Java Script methods available in Code Block as part of Processes.
 
-## Integrations
+**Table of Contents**
+- [API for Orders](#api-for-orders)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Contributing](#-contributing)
+
+## API for Orders
 
 ### integrations.orders.searchByOrderNumber(orderNumber: string): Order[]
 Searches for orders by order number across all integrations.
@@ -176,6 +182,8 @@ Adds tags to an order in a specific integration.
 #### Returns
 A response object with the outcome and value/reason.
 
+## API for Products
+
 ### integrations.products.search(options: ProductCatalogueSearchOptions): CatalogueProduct[]
 Searches for products in a specific integration.
 
@@ -186,6 +194,8 @@ Searches for products in a specific integration.
 
 #### Returns
 The products or null if no products are found.
+
+## API for Returns
 
 ### integrations.returns.searchByEmail(email: string): ReturnDetails[]
 Searches for returns by customer email across all integrations.
