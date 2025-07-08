@@ -1,4 +1,4 @@
-# API Methods
+# Code Block API Methods
 
 This documentation includes all Java Script methods available in Code Block as part of Processes.
 
@@ -667,7 +667,7 @@ Creates a new ticket in a specific integration.
 A response object with the outcome and value/reason.
 
 
-# Data Types
+# Code Block Data Types
 
 ## Message
 Represents a message in the interaction
