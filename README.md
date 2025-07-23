@@ -876,6 +876,7 @@ Represents the user information available through CRM
 | email         | string \| null | The email of the user or null if not provided        |
 | locale        | string \| null | The locale of the user or null if not provided       |
 | language      | string \| null | The language of the user or null if not provided     |
+| timeZone      | string \| null | The time zone of the user or null if not provided    |
 | authenticated | string \| null | The authentication status or null if not provided    |
 | accessToken   | string \| null | The access token or null if not provided             |
 | [key: string] | string         | Custom properties can be added with string keys      |
