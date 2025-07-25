@@ -921,19 +921,20 @@ Represents a line item in an order
 
 ### Properties
 
-| Name        | Type           | Description                    |
-| ----------- | -------------- | ------------------------------ |
-| id          | string         | The ID of the line item        |
-| productId   | string         | The product ID                 |
-| variantId   | string         | The variant ID                 |
-| title       | string         | The title of the product       |
-| description | string \| null | The description of the product |
-| price       | number         | The price of the product       |
-| currency    | string         | The currency of the price      |
-| quantity    | number         | The quantity ordered           |
-| shopUrl     | string \| null | The shop URL                   |
-| imageUrl    | string \| null | The image URL                  |
-| sku         | string \| null | The SKU                        |
+| Name             | Type            | Description                           |
+| ---------------- | --------------- | ------------------------------------- |
+| id               | string          | The ID of the line item               |
+| productId        | string          | The product ID                        |
+| variantId        | string          | The variant ID                        |
+| title            | string          | The title of the product              |
+| description      | string \| null  | The description of the product        |
+| price            | number          | The price of the product              |
+| currency         | string          | The currency of the price             |
+| quantity         | number          | The quantity ordered                  |
+| shopUrl          | string \| null  | The shop URL                          |
+| imageUrl         | string \| null  | The image URL                         |
+| sku              | string \| null  | The SKU                               |
+| requiresShipping | boolean \| null | Whether physical shipping is required |
 
 ---
 
@@ -1063,7 +1064,7 @@ Represents data of an order
 | contactDetails    | ContactDetails \| null | The contact details for the order       |
 | processedAt       | number \| null         | The processing time in milliseconds     |
 | customProperties  | OrderCustomProperty[]  | The custom properties for the order     |
-| integrationId     | string \| null         |
+| integrationId     | string \| null         |                                         |
 
 ---
 
@@ -1073,14 +1074,15 @@ Represents a variant of a product in the catalogue
 
 ### Properties
 
-| Name      | Type           | Description                          |
-| --------- | -------------- | ------------------------------------ |
-| variantId | string         | The unique identifier of the variant |
-| title     | string         | The title of the variant             |
-| minPrice  | number         | The minimum price of the variant     |
-| maxPrice  | number         | The maximum price of the variant     |
-| imageUrl  | string \| null | The image URL                        |
-| sku       | string \| null | The SKU                              |
+| Name             | Type            | Description                           |
+| ---------------- | --------------- | ------------------------------------- |
+| variantId        | string          | The unique identifier of the variant  |
+| title            | string          | The title of the variant              |
+| minPrice         | number          | The minimum price of the variant      |
+| maxPrice         | number          | The maximum price of the variant      |
+| imageUrl         | string \| null  | The image URL                         |
+| sku              | string \| null  | The SKU                               |
+| requiresShipping | boolean \| null | Whether physical shipping is required |
 
 ---
 
