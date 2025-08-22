@@ -1205,22 +1205,24 @@ Represents details of a subscription
 
 ### Properties
 
-| Name               | Type           | Description                                          |
-| ------------------ | -------------- | ---------------------------------------------------- |
-| subscriptionId     | string         | The unique identifier of the subscription            |
-| status             | string         | The status of the subscription                       |
-| title              | string         | The title of the subscription                        |
-| createdAt          | number         | The creation time in milliseconds                    |
-| cancelledAt        | number \| null | The cancellation time in milliseconds (if cancelled) |
-| cancellationReason | string \| null | The reason for cancellation (if cancelled)           |
-| price              | number         | The price of the subscription                        |
-| quantity           | number         | The quantity of the subscription                     |
-| currency           | string         | The currency of the subscription                     |
-| firstChargeAt      | number \| null | The time of the first charge in milliseconds         |
-| lastChargeAt       | number \| null | The time of the last charge in milliseconds          |
-| nextChargeAt       | number \| null | The time of the next charge in milliseconds          |
-| adminUrl           | string \| null | The admin URL for the subscription                   |
-| integrationId      | string \| null | The integration ID for the subscription              |
+| Name               | Type            | Description                                          |
+| ------------------ | --------------- | ---------------------------------------------------- |
+| subscriptionId     | string          | The unique identifier of the subscription            |
+| status             | string          | The status of the subscription                       |
+| title              | string          | The title of the subscription                        |
+| createdAt          | number          | The creation time in milliseconds                    |
+| cancelledAt        | number \| null  | The cancellation time in milliseconds (if cancelled) |
+| cancellationReason | string \| null  | The reason for cancellation (if cancelled)           |
+| price              | number          | The price of the subscription                        |
+| quantity           | number          | The quantity of the subscription                     |
+| currency           | string          | The currency of the subscription                     |
+| firstChargeAt      | number \| null  | The time of the first charge in milliseconds         |
+| lastChargeAt       | number \| null  | The time of the last charge in milliseconds          |
+| nextChargeAt       | number \| null  | The time of the next charge in milliseconds          |
+| adminUrl           | string \| null  | The admin URL for the subscription                   |
+| integrationId      | string \| null  | The integration ID for the subscription              |
+| shippingAddress    | Address \| null | The shipping address                                 |
+
 
 ---
 
