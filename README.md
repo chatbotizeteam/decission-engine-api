@@ -1384,15 +1384,3 @@ Represents a response from creating a ticket in Inbox
 | reason         | string                 | The reason for failure if the ticket creation failed (optional)   |
 
 ---
-
-## CarouselElement
-
-### Properties
-
-| Name          | Type   | Description          |
-| ------------- | ------ | -------------------- |
-| title         | string |                      |
-| subtitle      | string | Subtitle (optional)  |
-| imageUrl      | string | Image URL (optional) |
-| buttonUrl     | string |                      |
-| buttonCaption | string |                      |
