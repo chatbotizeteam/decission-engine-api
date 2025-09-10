@@ -1,6 +1,6 @@
 # Code Block API Methods
 
-This documentation includes all Java Script methods available in Code Block as part of Processes.
+This documentation includes all JavaScript methods available in Code Block as part of Processes.
 
 **Table of Contents**
 
@@ -14,14 +14,15 @@ This documentation includes all Java Script methods available in Code Block as p
 - [API for AI](#ai)
 - [API for Interaction](#interaction)
 - [API for HTTP](#http)
-- [API for Block](#block)
 - [API for Availability](#availability)
+- [API for Inbox](#api-for-inbox-integration)
+- [API for Files](#files)
 
 ## Block
 
 ### block.finish(result?: "success" \| "failure", reason?: string): void
 
-Finishes the current block with the given status. This function does not have to be explicitly called in most cases, as the block will automatically finish when Javascript evaluation completes.
+Finishes the current block with the given status. This function does not have to be explicitly called in most cases, as the block will automatically finish when JavaScript evaluation completes.
 
 #### Arguments
 
@@ -214,7 +215,7 @@ Writes multiple values to the CRM
 
 ### crm.getUser(): CrmUser
 
-Retrieves the current user's information Contains data written to the CRM earlier via write/writeMany, as well as default parameters that exist on the User object and parameters set by other parts of the system
+Retrieves the current user's information. Contains data written to the CRM earlier via write/writeMany, as well as default parameters that exist on the User object and parameters set by other parts of the system
 
 #### Returns
 
@@ -236,7 +237,7 @@ Generates a completion for a given prompt
 
 #### Returns
 
-An object with outcome and llm response
+An object with outcome and LLM response
 | Name | Type |
 | - | - |
 | outcome | "success" \| "failure" |
@@ -256,7 +257,7 @@ Generates a completion for a given prompt
 
 #### Returns
 
-An object with outcome and llm response
+An object with outcome and LLM response
 | Name | Type |
 | - | - |
 | outcome | "success" \| "failure" |
@@ -290,7 +291,7 @@ Sends a GET request to the specified URL
 | -------------- | ---------------------- | --------------------------------------------------------------------------------- |
 | url            | string                 | The URL to send the request to                                                    |
 | config         | object                 | The optional configuration object for the request (optional)                      |
-| config.headers | Record<string, string> | Optional headers (key-vaue pairs) to include in the request                       |
+| config.headers | Record<string, string> | Headers (key-value pairs) to include in the request (optional)                    |
 | config.timeout | number                 | The timeout in milliseconds (default: 30000). The maximum allowed value is 30000. |
 
 #### Returns
@@ -307,7 +308,7 @@ Sends a POST request to the specified URL with the given configuration.
 | -------------- | ---------------------- | --------------------------------------------------------------------------------- |
 | url            | string                 | The endpoint to send the request to.                                              |
 | config         | object                 | The optional configuration object for the request.                                |
-| config.headers | Record<string, string> | Optional headers (key-vaue pairs) to include in the request                       |
+| config.headers | Record<string, string> | Headers (key-value pairs) to include in the request (optional)                    |
 | config.data    | any                    | The payload to send in the request body.                                          |
 | config.timeout | number                 | The timeout in milliseconds (default: 30000). The maximum allowed value is 30000. |
 
@@ -317,7 +318,7 @@ The HTTP response
 
 ### http.put(url: string, config?: { headers?: Record<string, string>; data: any; timeout?: number }): HttpResponse
 
-Sends a POST request to the specified URL with the given configuration.
+Sends a PUT request to the specified URL with the given configuration.
 
 #### Arguments
 
@@ -325,7 +326,7 @@ Sends a POST request to the specified URL with the given configuration.
 | -------------- | ---------------------- | --------------------------------------------------------------------------------- |
 | url            | string                 | The endpoint to send the request to.                                              |
 | config         | object                 | The optional configuration object for the request.                                |
-| config.headers | Record<string, string> | Optional headers (key-vaue pairs) to include in the request                       |
+| config.headers | Record<string, string> | Headers (key-value pairs) to include in the request (optional)                    |
 | config.data    | any                    | The payload to send in the request body.                                          |
 | config.timeout | number                 | The timeout in milliseconds (default: 30000). The maximum allowed value is 30000. |
 
@@ -343,7 +344,7 @@ Sends a PATCH request to the specified URL with the given configuration.
 | -------------- | ---------------------- | --------------------------------------------------------------------------------- |
 | url            | string                 | The endpoint to send the request to.                                              |
 | config         | object                 | The optional configuration object for the request.                                |
-| config.headers | Record<string, string> | Optional headers (key-vaue pairs) to include in the request                       |
+| config.headers | Record<string, string> | Headers (key-value pairs) to include in the request (optional)                    |
 | config.data    | any                    | The payload to send in the request body.                                          |
 | config.timeout | number                 | The timeout in milliseconds (default: 30000). The maximum allowed value is 30000. |
 
@@ -361,7 +362,7 @@ Sends a DELETE request to the specified URL with the given configuration.
 | -------------- | ---------------------- | --------------------------------------------------------------------------------- |
 | url            | string                 | The endpoint to send the request to.                                              |
 | config         | object                 | The optional configuration object for the request.                                |
-| config.headers | Record<string, string> | Optional headers (key-vaue pairs) to include in the request                       |
+| config.headers | Record<string, string> | Headers (key-value pairs) to include in the request (optional)                    |
 | config.timeout | number                 | The timeout in milliseconds (default: 30000). The maximum allowed value is 30000. |
 
 #### Returns
@@ -618,7 +619,7 @@ Searches for products in a specific integration.
 
 #### Returns
 
-The products or null if no products are found.
+An array of products. Returns an empty array if none are found.
 
 ## API for Returns Integration
 
@@ -769,7 +770,7 @@ Cancels a subscription in a specific integration.
 | integrationId              | string  | The integration ID to cancel the subscription from.    |
 | sendEmail                  | boolean | Whether to send an email notification to the customer. |
 | cancellationReason         | string  | The reason for cancellation.                           |
-| cancellationReasonComments | string  | Optional comments for the cancellation reason.         |
+| cancellationReasonComments | string  | Comments for the cancellation reason (optional).       |
 
 #### Returns
 
@@ -809,11 +810,97 @@ Creates a new ticket in a specific integration.
 | requester              | RequesterInfo                | Information about the requester.                                      |
 | tags                   | string[]                     | Tags to add to the ticket.                                            |
 | fields                 | CustomField[]                | Custom fields for the ticket.                                         |
-| zendeskExtraProperties | ZendeskTicketExtraProperties | Optional extra properties for Zendesk tickets.                        |
+| zendeskExtraProperties | ZendeskTicketExtraProperties | Extra properties for Zendesk tickets (optional).                      |
 
 #### Returns
 
 A response object with the outcome and value/reason.
+
+### integrations.tickets.createWithTransfer( integrationId: string, subject: string, content: string, isHtmlContent: boolean, note: string, requester: RequesterInfo, tags: string[], fields: CustomField[], zendeskExtraProperties?: ZendeskTicketExtraProperties ): IntegrationResponse
+
+Creates a new ticket and marks the conversation as transferred.
+
+#### Arguments
+
+| Name                   | Type                         | Description                                                           |
+| ---------------------- | ---------------------------- | --------------------------------------------------------------------- |
+| integrationId          | string                       | The integration ID to create the ticket in.                           |
+| subject                | string                       | The subject of the ticket.                                            |
+| content                | string                       | The content of the ticket.                                            |
+| isHtmlContent          | boolean                      | Whether the content is HTML.                                          |
+| note                   | string                       | An optional note for the ticket. Leave as empty string if not needed. |
+| requester              | RequesterInfo                | Information about the requester.                                      |
+| tags                   | string[]                     | Tags to add to the ticket.                                            |
+| fields                 | CustomField[]                | Custom fields for the ticket.                                         |
+| zendeskExtraProperties | ZendeskTicketExtraProperties | Extra properties for Zendesk tickets (optional).                      |
+
+#### Returns
+
+A response object with the outcome and value/reason.
+
+---
+
+## API for Inbox Integration
+
+### integrations.inbox.create( mailboxId: string, requester: RequesterInfo, subject: string, content: string, attachments: { url: string; fileName?: string }[], queueAlias?: string ): InboxTicketsCreateResponse
+
+Creates a new ticket in Inbox.
+
+#### Arguments
+
+| Name        | Type                                 | Description                             |
+| ----------- | ------------------------------------ | --------------------------------------- |
+| mailboxId   | string                               | The mailbox ID to create the ticket in. |
+| requester   | RequesterInfo                        | Information about the requester.        |
+| subject     | string                               | The subject of the ticket.              |
+| content     | string                               | The content of the ticket.              |
+| attachments | { url: string; fileName?: string }[] | Attachments to include with the ticket. |
+| queueAlias  | string                               | Queue alias for routing (optional).     |
+
+#### Returns
+
+An object with outcome and conversationId/reason.
+
+### integrations.inbox.createWithTransfer( mailboxId: string, requester: RequesterInfo, subject: string, content: string, attachments: { url: string; fileName?: string }[], queueAlias?: string ): InboxTicketsCreateResponse
+
+Creates a new Inbox ticket and marks the conversation as transferred.
+
+#### Arguments
+
+| Name        | Type                                 | Description                             |
+| ----------- | ------------------------------------ | --------------------------------------- |
+| mailboxId   | string                               | The mailbox ID to create the ticket in. |
+| requester   | RequesterInfo                        | Information about the requester.        |
+| subject     | string                               | The subject of the ticket.              |
+| content     | string                               | The content of the ticket.              |
+| attachments | { url: string; fileName?: string }[] | Attachments to include with the ticket. |
+| queueAlias  | string                               | Queue alias for routing (optional).     |
+
+#### Returns
+
+An object with outcome and conversationId/reason.
+
+---
+
+## Files
+
+### files.getPublicUrl(file: { type: "File"; fileId: string }, options?: { ttlMinutes?: number }): string | null
+
+Generates a public URL for a file.
+
+#### Arguments
+
+| Name               | Type                             | Description                                  |
+| ------------------ | -------------------------------- | -------------------------------------------- |
+| file               | { type: "File"; fileId: string } | The file object.                             |
+| file.type          | "File"                           | Must be "File".                              |
+| file.fileId        | string                           | The ID of the file.                          |
+| options            | { ttlMinutes?: number }          | Configuration for URL generation (optional). |
+| options.ttlMinutes | number                           | Time-to-live in minutes (default: 24 hours). |
+
+#### Returns
+
+The public URL or null if the file is not found.
 
 # Code Block Data Types
 
@@ -879,7 +966,7 @@ Represents the user information available through CRM
 | timeZone      | string \| null | The time zone of the user or null if not provided    |
 | authenticated | string \| null | The authentication status or null if not provided    |
 | accessToken   | string \| null | The access token or null if not provided             |
-| [key: string] | string         | Custom properties can be added with string keys      |
+| [key: string] | string \| null | Custom properties can be added with string keys      |
 
 ---
 
@@ -1044,27 +1131,27 @@ Represents data of an order
 
 ### Properties
 
-| Name              | Type                   | Description                             |
-| ----------------- | ---------------------- | --------------------------------------- |
-| orderId           | string                 | The unique identifier of the order      |
-| orderNumber       | string                 | The order number                        |
-| status            | string                 | The status of the order                 |
-| createdAt         | number                 | The creation time in milliseconds       |
-| priceSummary      | PriceSummary           | The price summary of the order          |
-| lineItems         | LineItem[]             | The line items in the order             |
-| fulfillments      | Fulfillment[]          | The fulfillments for the order          |
-| billingAddress    | Address \| null        | The billing address                     |
-| shippingAddress   | Address \| null        | The shipping address                    |
-| tags              | string[]               | The tags associated with the order      |
-| adminUrl          | string \| null         | The admin URL for the order             |
-| storeUrl          | string \| null         | The store URL for the order             |
-| financialStatus   | string \| null         | The financial status of the order       |
-| fulfillmentStatus | string \| null         | The fulfillmentment status of the order |
-| deliveryMethods   | DeliveryMethod[]       | The delivery methods for the order      |
-| contactDetails    | ContactDetails \| null | The contact details for the order       |
-| processedAt       | number \| null         | The processing time in milliseconds     |
-| customProperties  | OrderCustomProperty[]  | The custom properties for the order     |
-| integrationId     | string \| null         |                                         |
+| Name              | Type                   | Description                         |
+| ----------------- | ---------------------- | ----------------------------------- |
+| orderId           | string                 | The unique identifier of the order  |
+| orderNumber       | string                 | The order number                    |
+| status            | string                 | The status of the order             |
+| createdAt         | number                 | The creation time in milliseconds   |
+| priceSummary      | PriceSummary           | The price summary of the order      |
+| lineItems         | LineItem[]             | The line items in the order         |
+| fulfillments      | Fulfillment[]          | The fulfillments for the order      |
+| billingAddress    | Address \| null        | The billing address                 |
+| shippingAddress   | Address \| null        | The shipping address                |
+| tags              | string[]               | The tags associated with the order  |
+| adminUrl          | string \| null         | The admin URL for the order         |
+| storeUrl          | string \| null         | The store URL for the order         |
+| financialStatus   | string \| null         | The financial status of the order   |
+| fulfillmentStatus | string \| null         | The fulfillment status of the order |
+| deliveryMethods   | DeliveryMethod[]       | The delivery methods for the order  |
+| contactDetails    | ContactDetails \| null | The contact details for the order   |
+| processedAt       | number \| null         | The processing time in milliseconds |
+| customProperties  | OrderCustomProperty[]  | The custom properties for the order |
+| integrationId     | string \| null         |                                     |
 
 ---
 
@@ -1115,10 +1202,10 @@ Represents a refund configuration for an order
 | currency           | string                                                                                     | The currency of the refund                                       |
 | reason             | "RESTOCK" \| "DAMAGED" \| "CUSTOMER" \| "OTHER"                                            | The reason for the refund                                        |
 | notifyCustomer     | boolean                                                                                    | Whether to notify the customer about the refund (default: false) |
-| note               | string                                                                                     | Optional note for the refund                                     |
+| note               | string                                                                                     | Note for the refund (optional)                                   |
 | refundLineItems    | { itemId: string; quantity: number; restockType: "CANCEL" \| "RETURN" \| "NO_RESTOCK"; }[] | Line items to be refunded (default: [])                          |
-| refundCustomAmount | number                                                                                     | Optional custom amount to refund                                 |
-| refundShipping     | number                                                                                     | Optional shipping refund                                         |
+| refundCustomAmount | number                                                                                     | Custom amount to refund (optional)                               |
+| refundShipping     | number                                                                                     | Shipping refund (optional)                                       |
 
 ---
 
@@ -1128,13 +1215,13 @@ Represents options for searching products in the catalogue
 
 ### Properties
 
-| Name           | Type     | Description                                               |
-| -------------- | -------- | --------------------------------------------------------- |
-| integrationId  | string   | The integration ID to limit the search to                 |
-| query          | string   | The query to search for                                   |
-| tags           | string[] | The tags to search within                                 |
-| page           | number   | The page number to search on (default: 1)                 |
-| entriesPerPage | number   | The number of entries per page to search on (default: 20) |
+| Name           | Type     | Description                                             |
+| -------------- | -------- | ------------------------------------------------------- |
+| integrationId  | string   | The integration ID to limit the search to (optional)    |
+| query          | string   | The query to search for (optional)                      |
+| tags           | string[] | The tags to search within (optional)                    |
+| page           | number   | The page number to search on (default: 1) (optional)    |
+| entriesPerPage | number   | The number of entries per page (default: 20) (optional) |
 
 ---
 
@@ -1223,7 +1310,6 @@ Represents details of a subscription
 | integrationId      | string \| null  | The integration ID for the subscription              |
 | shippingAddress    | Address \| null | The shipping address                                 |
 
-
 ---
 
 ## RequesterInfo
@@ -1259,11 +1345,11 @@ Represents extra properties for a Zendesk ticket
 
 ### Properties
 
-| Name      | Type     | Description                   |
-| --------- | -------- | ----------------------------- |
-| brandId   | number   | The brand ID (optional)       |
-| productId | number   | The product ID (optional)     |
-| ccEmails  | string[] | CC email addresses (optional) |
+| Name      | Type     | Description               |
+| --------- | -------- | ------------------------- |
+| brandId   | number   | The brand ID (optional)   |
+| productId | number   | The product ID (optional) |
+| ccEmails  | string[] | CC email addresses        |
 
 ---
 
@@ -1281,14 +1367,28 @@ Represents a response from an integration operation
 
 ---
 
+## InboxTicketsCreateResponse
+
+Represents a response from creating a ticket in Inbox
+
+### Properties
+
+| Name           | Type                   | Description                                                       |
+| -------------- | ---------------------- | ----------------------------------------------------------------- |
+| outcome        | "success" \| "failure" | The outcome of the ticket creation, either "success" or "failure" |
+| conversationId | string                 | The ID of the created conversation if successful (optional)       |
+| reason         | string                 | The reason for failure if the ticket creation failed (optional)   |
+
+---
+
 ## CarouselElement
 
 ### Properties
 
-| Name          | Type   | Description |
-| ------------- | ------ | ----------- |
-| title         | string |             |
-| subtitle      | string |             |
-| imageUrl      | string |             |
-| buttonUrl     | string |             |
-| buttonCaption | string |             |
+| Name          | Type   | Description          |
+| ------------- | ------ | -------------------- |
+| title         | string |                      |
+| subtitle      | string | Subtitle (optional)  |
+| imageUrl      | string | Image URL (optional) |
+| buttonUrl     | string |                      |
+| buttonCaption | string |                      |
