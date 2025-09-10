@@ -800,17 +800,17 @@ Creates a new ticket in a specific integration.
 
 #### Arguments
 
-| Name                   | Type                         | Description                                                           |
-| ---------------------- | ---------------------------- | --------------------------------------------------------------------- |
-| integrationId          | string                       | The integration ID to create the ticket in.                           |
-| subject                | string                       | The subject of the ticket.                                            |
-| content                | string                       | The content of the ticket.                                            |
-| isHtmlContent          | boolean                      | Whether the content is HTML.                                          |
-| note                   | string                       | An optional note for the ticket. Leave as empty string if not needed. |
-| requester              | RequesterInfo                | Information about the requester.                                      |
-| tags                   | string[]                     | Tags to add to the ticket.                                            |
-| fields                 | CustomField[]                | Custom fields for the ticket.                                         |
-| zendeskExtraProperties | ZendeskTicketExtraProperties | Extra properties for Zendesk tickets (optional).                      |
+| Name                   | Type                         | Description                                                            |
+| ---------------------- | ---------------------------- | ---------------------------------------------------------------------- |
+| integrationId          | string                       | The integration ID to create the ticket in.                            |
+| subject                | string                       | The subject of the ticket.                                             |
+| content                | string                       | The content of the ticket.                                             |
+| isHtmlContent          | boolean                      | Whether the content is HTML.                                           |
+| note                   | string                       | A note for the ticket (optional). Leave as empty string if not needed. |
+| requester              | RequesterInfo                | Information about the requester.                                       |
+| tags                   | string[]                     | Tags to add to the ticket.                                             |
+| fields                 | CustomField[]                | Custom fields for the ticket.                                          |
+| zendeskExtraProperties | ZendeskTicketExtraProperties | Extra properties for Zendesk tickets (optional).                       |
 
 #### Returns
 
@@ -822,17 +822,17 @@ Creates a new ticket and marks the conversation as transferred.
 
 #### Arguments
 
-| Name                   | Type                         | Description                                                           |
-| ---------------------- | ---------------------------- | --------------------------------------------------------------------- |
-| integrationId          | string                       | The integration ID to create the ticket in.                           |
-| subject                | string                       | The subject of the ticket.                                            |
-| content                | string                       | The content of the ticket.                                            |
-| isHtmlContent          | boolean                      | Whether the content is HTML.                                          |
-| note                   | string                       | An optional note for the ticket. Leave as empty string if not needed. |
-| requester              | RequesterInfo                | Information about the requester.                                      |
-| tags                   | string[]                     | Tags to add to the ticket.                                            |
-| fields                 | CustomField[]                | Custom fields for the ticket.                                         |
-| zendeskExtraProperties | ZendeskTicketExtraProperties | Extra properties for Zendesk tickets (optional).                      |
+| Name                   | Type                         | Description                                                            |
+| ---------------------- | ---------------------------- | ---------------------------------------------------------------------- |
+| integrationId          | string                       | The integration ID to create the ticket in.                            |
+| subject                | string                       | The subject of the ticket.                                             |
+| content                | string                       | The content of the ticket.                                             |
+| isHtmlContent          | boolean                      | Whether the content is HTML.                                           |
+| note                   | string                       | A note for the ticket (optional). Leave as empty string if not needed. |
+| requester              | RequesterInfo                | Information about the requester.                                       |
+| tags                   | string[]                     | Tags to add to the ticket.                                             |
+| fields                 | CustomField[]                | Custom fields for the ticket.                                          |
+| zendeskExtraProperties | ZendeskTicketExtraProperties | Extra properties for Zendesk tickets (optional).                       |
 
 #### Returns
 
@@ -848,14 +848,16 @@ Creates a new ticket in Inbox.
 
 #### Arguments
 
-| Name        | Type                                 | Description                             |
-| ----------- | ------------------------------------ | --------------------------------------- |
-| mailboxId   | string                               | The mailbox ID to create the ticket in. |
-| requester   | RequesterInfo                        | Information about the requester.        |
-| subject     | string                               | The subject of the ticket.              |
-| content     | string                               | The content of the ticket.              |
-| attachments | { url: string; fileName?: string }[] | Attachments to include with the ticket. |
-| queueAlias  | string                               | Queue alias for routing (optional).     |
+| Name                 | Type          | Description                                 |
+| -------------------- | ------------- | ------------------------------------------- |
+| mailboxId            | string        | The mailbox ID to create the ticket in.     |
+| requester            | RequesterInfo | Information about the requester.            |
+| subject              | string        | The subject of the ticket.                  |
+| content              | string        | The content of the ticket.                  |
+| attachments          | object[]      | Attachments to include with the ticket.     |
+| attachments.url      | string        | The URL of the attachment.                  |
+| attachments.fileName | string        | The file name of the attachment (optional). |
+| queueAlias           | string        | Queue alias for routing (optional).         |
 
 #### Returns
 
@@ -867,14 +869,16 @@ Creates a new Inbox ticket and marks the conversation as transferred.
 
 #### Arguments
 
-| Name        | Type                                 | Description                             |
-| ----------- | ------------------------------------ | --------------------------------------- |
-| mailboxId   | string                               | The mailbox ID to create the ticket in. |
-| requester   | RequesterInfo                        | Information about the requester.        |
-| subject     | string                               | The subject of the ticket.              |
-| content     | string                               | The content of the ticket.              |
-| attachments | { url: string; fileName?: string }[] | Attachments to include with the ticket. |
-| queueAlias  | string                               | Queue alias for routing (optional).     |
+| Name                 | Type          | Description                                 |
+| -------------------- | ------------- | ------------------------------------------- |
+| mailboxId            | string        | The mailbox ID to create the ticket in.     |
+| requester            | RequesterInfo | Information about the requester.            |
+| subject              | string        | The subject of the ticket.                  |
+| content              | string        | The content of the ticket.                  |
+| attachments          | object[]      | Attachments to include with the ticket.     |
+| attachments.url      | string        | The URL of the attachment.                  |
+| attachments.fileName | string        | The file name of the attachment (optional). |
+| queueAlias           | string        | Queue alias for routing (optional).         |
 
 #### Returns
 
@@ -890,13 +894,13 @@ Generates a public URL for a file.
 
 #### Arguments
 
-| Name               | Type                             | Description                                  |
-| ------------------ | -------------------------------- | -------------------------------------------- |
-| file               | { type: "File"; fileId: string } | The file object.                             |
-| file.type          | "File"                           | Must be "File".                              |
-| file.fileId        | string                           | The ID of the file.                          |
-| options            | { ttlMinutes?: number }          | Configuration for URL generation (optional). |
-| options.ttlMinutes | number                           | Time-to-live in minutes (default: 24 hours). |
+| Name               | Type   | Description                                  |
+| ------------------ | ------ | -------------------------------------------- |
+| file               | object | The file object.                             |
+| file.type          | "File" | Must be "File".                              |
+| file.fileId        | string | The ID of the file.                          |
+| options            | object | Configuration for URL generation (optional). |
+| options.ttlMinutes | number | Time-to-live in minutes (default: 24 hours). |
 
 #### Returns
 
