@@ -1054,17 +1054,17 @@ Represents an address
 
 ### Properties
 
-| Name         | Type           | Description                          |
-| ------------ | -------------- | ------------------------------------ |
-| name         | string \| null | The name associated with the address |
-| addressLine1 | string \| null | The first line of the address        |
-| addressLine2 | string \| null | The second line of the address       |
-| zip          | string \| null | The ZIP/postal code                  |
-| city         | string \| null | The city                             |
-| province     | string \| null | The province/state                   |
-| country      | string \| null | The country                          |
-| provinceCode | string \| null | The province/state code              |
-| countryCode  | string \| null | The country code                     |
+| Name         | Type           | Description                                     |
+| ------------ | -------------- | ----------------------------------------------- |
+| name         | string \| null | The name associated with the address (optional) |
+| addressLine1 | string \| null | The first line of the address (optional)        |
+| addressLine2 | string \| null | The second line of the address (optional)       |
+| zip          | string \| null | The ZIP/postal code (optional)                  |
+| city         | string \| null | The city (optional)                             |
+| province     | string \| null | The province/state (optional)                   |
+| country      | string \| null | The country (optional)                          |
+| provinceCode | string \| null | The province/state code (optional)              |
+| countryCode  | string \| null | The country code (optional)                     |
 
 ---
 
@@ -1135,27 +1135,27 @@ Represents data of an order
 
 ### Properties
 
-| Name              | Type                   | Description                         |
-| ----------------- | ---------------------- | ----------------------------------- |
-| orderId           | string                 | The unique identifier of the order  |
-| orderNumber       | string                 | The order number                    |
-| status            | string                 | The status of the order             |
-| createdAt         | number                 | The creation time in milliseconds   |
-| priceSummary      | PriceSummary           | The price summary of the order      |
-| lineItems         | LineItem[]             | The line items in the order         |
-| fulfillments      | Fulfillment[]          | The fulfillments for the order      |
-| billingAddress    | Address \| null        | The billing address                 |
-| shippingAddress   | Address \| null        | The shipping address                |
-| tags              | string[]               | The tags associated with the order  |
-| adminUrl          | string \| null         | The admin URL for the order         |
-| storeUrl          | string \| null         | The store URL for the order         |
-| financialStatus   | string \| null         | The financial status of the order   |
-| fulfillmentStatus | string \| null         | The fulfillment status of the order |
-| deliveryMethods   | DeliveryMethod[]       | The delivery methods for the order  |
-| contactDetails    | ContactDetails \| null | The contact details for the order   |
-| processedAt       | number \| null         | The processing time in milliseconds |
-| customProperties  | OrderCustomProperty[]  | The custom properties for the order |
-| integrationId     | string \| null         |                                     |
+| Name              | Type                   | Description                                 |
+| ----------------- | ---------------------- | ------------------------------------------- |
+| orderId           | string                 | The unique identifier of the order          |
+| orderNumber       | string                 | The order number                            |
+| status            | string                 | The status of the order                     |
+| createdAt         | number                 | The creation time in milliseconds           |
+| priceSummary      | PriceSummary           | The price summary of the order              |
+| lineItems         | LineItem[]             | The line items in the order                 |
+| fulfillments      | Fulfillment[]          | The fulfillments for the order              |
+| billingAddress    | Address \| null        | The billing address                         |
+| shippingAddress   | Address \| null        | The shipping address                        |
+| tags              | string[]               | The tags associated with the order          |
+| adminUrl          | string \| null         | The admin URL for the order                 |
+| storeUrl          | string \| null         | The store URL for the order                 |
+| financialStatus   | string \| null         | The financial status of the order           |
+| fulfillmentStatus | string \| null         | The fulfillment status of the order         |
+| deliveryMethods   | DeliveryMethod[]       | The delivery methods for the order          |
+| contactDetails    | ContactDetails \| null | The contact details for the order           |
+| processedAt       | number \| null         | The processing time in milliseconds         |
+| customProperties  | OrderCustomProperty[]  | The custom properties for the order         |
+| integrationId     | string \| null         | The integration ID for the order (optional) |
 
 ---
 
@@ -1349,11 +1349,11 @@ Represents extra properties for a Zendesk ticket
 
 ### Properties
 
-| Name      | Type     | Description               |
-| --------- | -------- | ------------------------- |
-| brandId   | number   | The brand ID (optional)   |
-| productId | number   | The product ID (optional) |
-| ccEmails  | string[] | CC email addresses        |
+| Name      | Type     | Description                   |
+| --------- | -------- | ----------------------------- |
+| brandId   | number   | The brand ID (optional)       |
+| productId | number   | The product ID (optional)     |
+| ccEmails  | string[] | CC email addresses (required) |
 
 ---
 
@@ -1363,11 +1363,11 @@ Represents a response from an integration operation
 
 ### Properties
 
-| Name    | Type                   | Description                                                                       |
-| ------- | ---------------------- | --------------------------------------------------------------------------------- |
-| outcome | "success" \| "failure" | The outcome of the operation, either "success" or "failure"                       |
-| value   | string                 | The value returned if the operation was successful (usually the ID of the entity) |
-| reason  | string                 | The reason for failure if the operation failed (optional)                         |
+| Name    | Type                   | Description                                                                                  |
+| ------- | ---------------------- | -------------------------------------------------------------------------------------------- |
+| outcome | "success" \| "failure" | The outcome of the operation, either "success" or "failure"                                  |
+| value   | string                 | The value returned if the operation was successful (usually the ID of the entity) (optional) |
+| reason  | string                 | The reason for failure if the operation failed (optional)                                    |
 
 ---
 
