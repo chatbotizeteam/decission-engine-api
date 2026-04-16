@@ -15,6 +15,7 @@ This documentation includes all JavaScript methods available in Code Block as pa
 - [API for Interaction](#interaction)
 - [API for HTTP](#http)
 - [API for Availability](#availability)
+- [API for UI](#ui)
 - [API for Inbox](#api-for-inbox-integration)
 - [API for Files](#files)
 
@@ -386,6 +387,21 @@ Checks if a handover instance is within working hours
 #### Returns
 
 true if within working hours, false otherwise
+
+---
+
+## UI
+
+### ui.sendEvent(name: string, params?: Record<string, any>): void
+
+Sends a custom event to the chat widget.
+
+#### Arguments
+
+| Name   | Type                | Description                                          |
+| ------ | ------------------- | ---------------------------------------------------- |
+| name   | string              | The name of the event                                |
+| params | Record<string, any> | Optional parameters to include with the event        |
 
 ---
 
